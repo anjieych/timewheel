@@ -19,6 +19,7 @@ func main() {
 	}
 }
 
+// Data must implements timewheel.Entity
 type Data struct {
 	eid    int64
 	slotId int

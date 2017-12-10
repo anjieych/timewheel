@@ -1,10 +1,20 @@
 # timewheel
-timewheel for golang
+timewheel for golang.
+
+It's not only an traditional timewheel (http://blog.csdn.net/mindfloating/article/details/8033340),
+but also a supper set of timewheel.If you want ,you can put one or more serval kind of struct Data
+which implement Entity into timewheel,each kind struct Data will fired OnExpired when expired  at
+d duration. It's also means that you can store more than one kind of struct Data into one instance
+of timewheel.
 
 # usage
-package main
+
+
 
 ```
+package main
+
+
 import (
 	"fmt"
 	"github.com/anjieych/timewheel"
@@ -23,7 +33,7 @@ func main() {
 		d.SetSlotId(tw.Add(d, 5*time.Second))
 	}
 }
-
+// Data must implements timewheel.Entity
 type Data struct {
 	eid    int64
 	slotId int
