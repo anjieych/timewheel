@@ -22,7 +22,7 @@ func main() {
 // Data must implements timewheel.Entity
 type Data struct {
 	eid    int64
-	slotId int
+	slotId int64
 	data   interface{}
 }
 
@@ -32,10 +32,10 @@ func (d *Data) SetEId(eId int64) {
 func (d *Data) GetEId() (eId int64) {
 	return d.eid
 }
-func (d *Data) SetSlotId(slotId int) {
+func (d *Data) SetSlotId(slotId int64) {
 	d.slotId = slotId
 }
-func (d *Data) GetSlotId() (slotId int) {
+func (d *Data) GetSlotId() (slotId int64) {
 	return d.slotId
 }
 func (d *Data) OnExpired() {
