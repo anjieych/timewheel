@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// Timewheel
 type Timewheel struct {
 	name     string        //name of Timewheel
 	interval time.Duration //指针每隔多久向前移动一格（槽)
@@ -15,14 +16,10 @@ type Timewheel struct {
 	pos      int           // current position of slots which was fired and the pos+1 will be fired at next tick
 }
 
-/**
-时间轮槽集合 ,key:序号[0,1,2,3.....],value:Slot
-*/
+// 时间轮槽集合 ,key:序号[0,1,2,3.....],value:Slot
 type Slots sync.Map
 
-/**
-时间轮槽 ,key:序号[0,1,2,3.....],value:Entity
-*/
+// 时间轮槽 ,key:序号[0,1,2,3.....],value:Entity
 type Slot sync.Map
 
 // Entity the data entity which stored into timewheel and be expired.
@@ -46,7 +43,7 @@ func NewTimewheel(name string, interval time.Duration) *Timewheel {
 	}
 }
 
-//Start starts the Timewheel tw
+// Start starts the Timewheel tw
 func (tw *Timewheel) Start() {
 	if tw.ticker == nil {
 		tw.ticker = time.NewTicker(tw.interval)
