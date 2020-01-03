@@ -1,7 +1,7 @@
 package timewheel
 
 import (
-	"fmt"
+	//"fmt"
 	"sync"
 	"time"
 )
@@ -66,7 +66,7 @@ func (tw *Timewheel) start() {
 
 func (tw *Timewheel) tickHandler(pos int64) {
 	defer tw.slots.Delete(pos)
-	fmt.Printf("%s\t Timewheel[%s]\t expired at slot: %d \n", time.Now().Local(), tw.name, pos)
+	//fmt.Printf("%s\t Timewheel[%s]\t expired at slot: %d \n", time.Now().Local(), tw.name, pos)
 	slot, ok := tw.slots.Load(pos)
 	if !ok || slot == nil {
 		return
@@ -103,6 +103,7 @@ func (tw *Timewheel) Add(e Entity, delay time.Duration) (slotId int64) {
 	}
 
 	slotMap.Store(e.GetEId(), e)
+	e.SetSlotId(slotId)
 	return slotId
 
 }
